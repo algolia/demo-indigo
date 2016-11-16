@@ -44,6 +44,9 @@ class SearchInputController {
 
     set query(value) {
         this._searchStore.query = value;
+        if (value === "") {
+            this._searchStore.resetDisplay();
+        }
     }
 
     get dropdownIsOpen() {
@@ -77,15 +80,15 @@ class SearchInputController {
     renderHtml(text) {
         return this._$sce.trustAsHtml(text);
     }
-    
+
     renderAuthor(author) {
         return author != "" ? this.renderHtml(author.split("Author ").length > 1 ? author.split("Author ")[1].split("^")[0] : author.split("Author ")[0]) : "";
     }
-    
+
     renderPDPLink(PID, RecordType, name, secondaryName) {
         return "https://www.chapters.indigo.ca/en-ca/" + RecordType + "s/" + (name != undefined ? this._hyphenateString(name) : this._hyphenateString(secondaryName)) + "/" + PID + "-item.html";
     }
-    
+
     _hyphenateString(str) {
         return str.split(" ").join("-");
     }

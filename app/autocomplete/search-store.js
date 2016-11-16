@@ -55,38 +55,42 @@ class SearchStore {
     }
 
     updateRecordType(recordType) {
-        this._currentRecordType = recordType;
+        this._currentRecordType = recordType; 
+        this.searchQuery();
     }
 
     searchQuery() {
-        this._updateBookResults();
-        this._updateProductResults();
-        this._updateCategoryResults();
-        this._updateBrandResults();
-        this._updateAuthorResults();
+        if (this.query.length > 0) {
+            this._updateBookResults();
+            this._updateProductResults();
+            this._updateCategoryResults();
+            this._updateBrandResults();
+            this._updateAuthorResults();
+        }
     }
 
     _updateBookResults() {
         this._productsIndex.search(this.query, {
             filters: 'RecordType:Book',
-            hitsPerPage: 5
+            hitsPerPage: 10
         }).then(
             (results) => {
                 this._bookResults = results;
                 this._displayResults = true;
                 this._$rootScope.$evalAsync();
-            });
+            }).catch(err => this._handleFetchError(err));
     }
 
     _updateProductResults() {
         this._productsIndex.search(this.query, {
-            filters: 'NOT RecordType:Book',
-            hitsPerPage: 5
+            filters: this._createProductsFilterQuery(this._currentRecordType),
+            hitsPerPage: 10
         }).then(
             (results) => {
                 this._productResults = results;
+                this._displayResults = true;
                 this._$rootScope.$evalAsync();
-            });
+            }).catch(err => this._handleFetchError(err));
     }
 
     _updateCategoryResults() {
@@ -97,7 +101,7 @@ class SearchStore {
             (results) => {
                 this._categoryResults = results;
                 this._$rootScope.$evalAsync();
-            });
+            }).catch(err => this._handleFetchError(err));
     }
 
     _updateBrandResults() {
@@ -108,7 +112,7 @@ class SearchStore {
             (results) => {
                 this._brandResults = results;
                 this._$rootScope.$evalAsync();
-            });
+            }).catch(err => this._handleFetchError(err));
     }
 
     _updateAuthorResults() {
@@ -116,15 +120,24 @@ class SearchStore {
             (results) => {
                 this._authorResults = results;
                 this._$rootScope.$evalAsync();
-            });
+            }).catch(err => this._handleFetchError(err));
     }
 
     _createFilterQuery(recordType) {
         return recordType != "" ? "RecordType:" + recordType : "";
     }
+    
+    _createProductsFilterQuery(recordType) {
+        return recordType === "" ? "NOT RecordType:Book" : "NOT RecordType:Book AND RecordType:" + recordType;
+    }
 
     _handleFetchError(err) {
         console.log(err);
+    }
+    
+    resetDisplay() {
+        this._displayResults = false;
+        this._$rootScope.$evalAsync();
     }
 
 }

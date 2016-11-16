@@ -10,6 +10,49 @@
         display: flex;
         padding: 20px;
         box-sizing: border-box;
+        &.two-col {
+            &:not(.two-col-books) {
+                .ac-results-col {
+                    &:first-child {
+                        display: none;
+                    }
+                    &:nth-child(2) {
+                        flex-grow: 2;
+                    }
+                }
+            }
+            .ac-results-prods {
+                display: flex;
+                flex-flow: row wrap;
+                margin-top: -10px;
+            }
+            .ac-results-prod-container {
+                flex-grow: 1;
+                flex-basis: calc(50% - 20px);
+                margin: 0;
+                &:nth-child(odd) {
+                    margin-left: -10px;
+                }
+                &:nth-child(even) {
+                    margin-right: -10px;
+                }
+            }
+        }
+        &.two-col.two-col-books {
+            .ac-results-col {
+                &:first-child {
+                    flex-grow: 2;
+                }
+                &:nth-child(2) {
+                    display: none;
+                }
+            }
+        }
+        &:not(.two-col) {
+            .ac-results-prod-container:nth-child(5) ~ .ac-results-prod-container {
+                display: none;
+            }
+        }
     }
     &-col {
         flex-grow: 1;
@@ -165,13 +208,18 @@
         &-em {
             font-family: 'Gibson Bold'!important;
         }
-        &-delineator {
-            height: 3px;
-            width: 10px;
-            display: inline-block;
-            background-color: #a29ea2;
-            vertical-align: middle;
-            margin: -1px 6px 0 6px;
+        &-category {
+            & + & {
+                &:before {
+                    content: "";
+                    height: 3px;
+                    width: 10px;
+                    display: inline-block;
+                    background-color: #a29ea2;
+                    vertical-align: middle;
+                    margin: -1px 6px 0 6px;
+                }
+            }
         }
     }
 }

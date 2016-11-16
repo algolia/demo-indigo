@@ -17,22 +17,24 @@
             <button class="search__go" type="submit" id="search-submit" tabindex="3" aria-labelledby="search-submit-label">search</button>
         </div>
     </div>
-    <div class="ac-results-container" data-ng-if="searchInputController.searchStore.displayResults && searchInputController.query">
+    <div class="ac-results-container ng-cloak" data-ng-class="{'two-col': searchInputController.currentRecordType != '', 'two-col-books': searchInputController.currentRecordType === 'Book'}" data-ng-if="searchInputController.searchStore.displayResults && searchInputController.query">
         <div class="ac-results-col">
             <div>
                 <h2 class="standard_title">Books</h2>
-                <div class="ac-results-prod-container" data-ng-repeat="result in searchInputController.bookResults.hits">
-                    <a class="ac-results-prod-wrapper" data-ng-href="{{searchInputController.renderPDPLink(result.PID, result.RecordType, result.title)}}">
-                        <div class="ac-results-prod-img-container">
-                            <img class="ac-results-prod-img" data-ng-src="https://dynamic.indigoimages.ca/books/{{result.PID}}.jpg">
-                        </div>
-                        <div class="ac-results-prod-info">
-                            <p class="ac-results-prod-title" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.title.value)"></p>
-                            <p class="ac-results-prod-author" data-ng-bind-html="searchInputController.renderAuthor(result._highlightResult.Contributors.value)"></p>
-                            <p class="ac-results-prod-subtitle" data-ng-if="result.subtitle" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.subtitle.value)"></p>
-                            <p class="ac-results-prod-price">Price {{result.AdjustedPrice | currency}}</p>
-                        </div>
-                    </a>
+                <div class="ac-results-prods">
+                    <div class="ac-results-prod-container" data-ng-repeat="result in searchInputController.bookResults.hits">
+                        <a class="ac-results-prod-wrapper" data-ng-href="{{searchInputController.renderPDPLink(result.PID, result.RecordType, result.title)}}">
+                            <div class="ac-results-prod-img-container">
+                                <img class="ac-results-prod-img" data-ng-src="https://dynamic.indigoimages.ca/books/{{result.PID}}.jpg">
+                            </div>
+                            <div class="ac-results-prod-info">
+                                <p class="ac-results-prod-title" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.title.value)"></p>
+                                <p class="ac-results-prod-author" data-ng-bind-html="searchInputController.renderAuthor(result._highlightResult.Contributors.value)"></p>
+                                <p class="ac-results-prod-subtitle" data-ng-if="result.subtitle" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.subtitle.value)"></p>
+                                <p class="ac-results-prod-price">Price {{result.AdjustedPrice | currency}}</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
             <a class="ac-results-cta">
@@ -42,21 +44,23 @@
         <div class="ac-results-col">
             <div>
                 <h2 class="standard_title">Products</h2>
-                <div class="ac-results-prod-container" data-ng-repeat="result in searchInputController.productResults.hits">
-                    <a class="ac-results-prod-wrapper" data-ng-href="{{searchInputController.renderPDPLink(result.PID, result.RecordType, result.Name_en, result.ToyName)}}">
-                        <div class="ac-results-prod-img-container">
-                            <img class="ac-results-prod-img" data-ng-src="https://dynamic.indigoimages.ca/{{result.RecordType}}s/{{result.PID}}0.jpg">
-                        </div>
-                        <div class="ac-results-prod-info">
-                            <p class="ac-results-prod-title" data-ng-if="result.Name_en" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.Name_en.value)"></p>
-                            <p class="ac-results-prod-title" data-ng-if="result.ToyName" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.ToyName.value)"></p>
-                            <p class="ac-results-prod-author" data-ng-if="result.BrandName" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.BrandName.value)"></p>
-                            <p class="ac-results-prod-author" data-ng-if="result.BrandName_en" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.BrandName_en.value)"></p>
-                            <p class="ac-results-prod-subtitle" data-ng-if="result.AudienceDescription">{{result.AudienceDescription}}</p>
-                            <p class="ac-results-prod-subtitle" data-ng-if="result.Style_en">{{result.Style_en}}</p>
-                            <p class="ac-results-prod-price">Price {{result.AdjustedPrice | currency}}</p>
-                        </div>
-                    </a>
+                <div class="ac-results-prods">
+                    <div class="ac-results-prod-container" data-ng-repeat="result in searchInputController.productResults.hits">
+                        <a class="ac-results-prod-wrapper" data-ng-href="{{searchInputController.renderPDPLink(result.PID, result.RecordType, result.Name_en, result.ToyName)}}">
+                            <div class="ac-results-prod-img-container">
+                                <img class="ac-results-prod-img" data-ng-src="https://dynamic.indigoimages.ca/{{result.RecordType}}s/{{result.PID}}0.jpg">
+                            </div>
+                            <div class="ac-results-prod-info">
+                                <p class="ac-results-prod-title" data-ng-if="result.Name_en" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.Name_en.value)"></p>
+                                <p class="ac-results-prod-title" data-ng-if="result.ToyName" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.ToyName.value)"></p>
+                                <p class="ac-results-prod-author" data-ng-if="result._highlightResult.BrandName.value" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.BrandName.value)"></p>
+                                <p class="ac-results-prod-author" data-ng-if="result._highlightResult.BrandName_en.value" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.BrandName_en.value)"></p>
+                                <p class="ac-results-prod-subtitle" data-ng-if="result.AudienceDescription">{{result.AudienceDescription}}</p>
+                                <p class="ac-results-prod-subtitle" data-ng-if="result.Style_en">{{result.Style_en}}</p>
+                                <p class="ac-results-prod-price">Price {{result.AdjustedPrice | currency}}</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
             <a class="ac-results-cta">
@@ -64,25 +68,27 @@
             </a>
         </div>
         <div class="ac-results-col">
-            <div class="ac-results-data">
+            <div class="ac-results-data" data-ng-if="searchInputController.currentRecordType != 'Book'">
                 <h2 class="standard_title">Brands</h2>
-            <div data-ng-repeat="result in searchInputController.brandResults.hits" class="ac-results-data-item">
-                <a data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.name.value)"></a>
-            </div>
+                <div data-ng-repeat="result in searchInputController.brandResults.hits" class="ac-results-data-item">
+                    <a data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.name.value)"></a>
                 </div>
-            <div class="ac-results-data">
-                <h2 class="standard_title">Authors</h2>
-            <div data-ng-repeat="result in searchInputController.authorResults.hits" class="ac-results-data-item">
-                <a data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.name.value)"></a>
             </div>
+            <div class="ac-results-data" data-ng-if="searchInputController.currentRecordType === ('Book' || '')">
+                <h2 class="standard_title">Authors</h2>
+                <div data-ng-repeat="result in searchInputController.authorResults.hits" class="ac-results-data-item">
+                    <a data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.name.value)"></a>
+                </div>
             </div>
             <div class="ac-results-data">
                 <h2 class="standard_title">Categories</h2>
-            <div data-ng-repeat="result in searchInputController.categoryResults.hits" class="ac-results-data-item">
-                <p>
-                    <a data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.hierarchicalCategories.lvl2.value)"></a> <span data-ng-if="result.hierarchicalCategories.lvl2" class="ac-results-data-item-delineator"></span> <a data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.hierarchicalCategories.lvl1.value)"></a> <span data-ng-if="result.hierarchicalCategories.lvl1"  class="ac-results-data-item-delineator"></span> <a class="ac-results-data-item-em" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.hierarchicalCategories.lvl0.value)"></a>
-                </p>
-            </div>
+                <div data-ng-repeat="result in searchInputController.categoryResults.hits" class="ac-results-data-item">
+                    <p>
+                        <a class="ac-results-data-item-category ac-results-data-item-em" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.hierarchicalCategories.lvl0.value)"></a>
+                        <a class="ac-results-data-item-category" data-ng-if="result.hierarchicalCategories.lvl1" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.hierarchicalCategories.lvl1.value)"></a>
+                        <a class="ac-results-data-item-category" data-ng-if="result.hierarchicalCategories.lvl2" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.hierarchicalCategories.lvl2.value)"></a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
