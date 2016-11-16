@@ -74,7 +74,7 @@
                     <a data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.name.value)"></a>
                 </div>
             </div>
-            <div class="ac-results-data" data-ng-if="searchInputController.currentRecordType === ('Book' || '')">
+            <div class="ac-results-data" data-ng-if="searchInputController.currentRecordType === 'Book' || searchInputController.currentRecordType === ''">
                 <h2 class="standard_title">Authors</h2>
                 <div data-ng-repeat="result in searchInputController.authorResults.hits" class="ac-results-data-item">
                     <a data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.name.value)"></a>
