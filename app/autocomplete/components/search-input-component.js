@@ -82,7 +82,8 @@ class SearchInputController {
     }
 
     renderAuthor(author) {
-        return author != "" ? this.renderHtml(author.split("Author ").length > 1 ? author.split("Author ")[1].split("^")[0] : author.split("Author ")[0]) : "";
+        var splitAuthor = author.substr(author.indexOf(' ')+1).split("^")[0];
+        return author != "" ? this.renderHtml(splitAuthor) : "";
     }
 
     renderPDPLink(PID, RecordType, name, secondaryName) {

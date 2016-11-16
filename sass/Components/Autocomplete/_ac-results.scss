@@ -1,4 +1,23 @@
 // ------------- AUTOCOMPLETE RESULTS ------------- //
+%two-col {
+    .ac-results-prods {
+        display: flex;
+        flex-flow: row wrap;
+        margin-top: -10px;
+    }
+    .ac-results-prod-container {
+        flex-grow: 1;
+        flex-basis: calc(50% - 20px);
+        margin: 0;
+        &:nth-child(odd) {
+            margin-left: -10px;
+        }
+        &:nth-child(even) {
+            margin-right: -10px;
+        }
+    }
+}
+
 .ac-results {
     &-container {
         position: absolute;
@@ -18,27 +37,13 @@
                     }
                     &:nth-child(2) {
                         flex-grow: 2;
+                        margin-left: 0;
                     }
                 }
             }
-            .ac-results-prods {
-                display: flex;
-                flex-flow: row wrap;
-                margin-top: -10px;
-            }
-            .ac-results-prod-container {
-                flex-grow: 1;
-                flex-basis: calc(50% - 20px);
-                margin: 0;
-                &:nth-child(odd) {
-                    margin-left: -10px;
-                }
-                &:nth-child(even) {
-                    margin-right: -10px;
-                }
-            }
+            @extend %two-col;
         }
-        &.two-col.two-col-books {
+        &.two-col-books {
             .ac-results-col {
                 &:first-child {
                     flex-grow: 2;
@@ -47,11 +52,17 @@
                     display: none;
                 }
             }
+            @extend %two-col;
         }
         &:not(.two-col) {
             .ac-results-prod-container:nth-child(5) ~ .ac-results-prod-container {
                 display: none;
             }
+        }
+        &.empty {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
         }
     }
     &-col {
@@ -150,6 +161,12 @@
         font: 14px/17px "Gibson Bold", "Helvetica", "Arial", sans-serif;
         text-transform: uppercase;
         letter-spacing: 0.15em;
+        + .ac-results-prod-price {
+            margin-top: 14px;
+        }
+        + .ac-results-prod-subtitle {
+            margin-top: 6px;
+        }
     }
     &-author {
         font: 15px/22px 'Miller Display Italic', serif;

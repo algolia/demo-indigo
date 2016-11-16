@@ -17,7 +17,7 @@
             <button class="search__go" type="submit" id="search-submit" tabindex="3" aria-labelledby="search-submit-label">search</button>
         </div>
     </div>
-    <div class="ac-results-container ng-cloak" data-ng-class="{'two-col': searchInputController.currentRecordType != '', 'two-col-books': searchInputController.currentRecordType === 'Book'}" data-ng-if="searchInputController.searchStore.displayResults && searchInputController.query">
+    <div class="ac-results-container ng-cloak" data-ng-class="{'two-col': (searchInputController.currentRecordType != '' || searchInputController.bookResults.hits.length === 0), 'two-col-books': (searchInputController.currentRecordType === 'Book' || searchInputController.productResults.hits.length === 0), 'empty': ((searchInputController.currentRecordType === 'Book' && searchInputController.bookResults.hits.length === 0) || ((searchInputController.currentRecordType === 'Gift' || searchInputController.currentRecordType === 'Toy') && searchInputController.productResults.hits.length === 0))}" data-ng-if="(searchInputController.searchStore.displayResults && searchInputController.query) && (searchInputController.bookResults.hits.length > 0 || searchInputController.productResults.hits.length > 0)">
         <div class="ac-results-col">
             <div>
                 <h2 class="standard_title">Books</h2>
@@ -77,7 +77,7 @@
             <div class="ac-results-data" data-ng-if="(searchInputController.currentRecordType === 'Book' || searchInputController.currentRecordType === '') && searchInputController.authorResults.hits.length > 0">
                 <h2 class="standard_title">Authors</h2>
                 <div data-ng-repeat="result in searchInputController.authorResults.hits" class="ac-results-data-item">
-                    <a data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.name.value)"></a>
+                    <a data-ng-bind-html="searchInputController.renderAuthor(result._highlightResult.name.value)"></a>
                 </div>
             </div>
             <div class="ac-results-data" data-ng-if="searchInputController.categoryResults.hits.length > 0">
