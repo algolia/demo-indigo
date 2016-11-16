@@ -1,0 +1,19 @@
+// ------------- AUTOCOMPLETE INPUT - OVERRIDES ------------- //
+
+.search__t {
+    overflow: visible!important;
+    margin-left: -12px!important;
+}
+
+
+// ------------- AUTOCOMPLETE INPUT - DROPDOWN ------------- //
+
+.ac-input-dropdown {
+    opacity: 0;
+    visibility: hidden;
+    &.open {
+        opacity: 1;
+        visibility: visible;
+        transition: .15s;
+    }
+} 

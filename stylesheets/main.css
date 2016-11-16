@@ -1,0 +1,230 @@
+.header_search div[role=combobox].select-standard {
+  background: url(https://static.indigoimages.ca/VersionedAssets/3.28.4/Assets/Shared/Images/down_arrow.png) no-repeat 99px center !important; }
+
+.logo-link {
+  background: url(https://static.indigoimages.ca/VersionedAssets/3.28.4/Assets/Shared/Images/indigo_logo_106x55.png) no-repeat; }
+
+.cart__icon {
+  background: url(https://static.indigoimages.ca/VersionedAssets/3.28.4/Assets/Shared/Images/shopping_cart.png) no-repeat; }
+
+.browsecartTab-title,
+.browsecartTab-buttonWrapper {
+  background: url(https://static.indigoimages.ca/VersionedAssets/3.28.4/Assets/Shared/Images/sprites02.png) no-repeat -170px -175px; }
+
+.browsecartTab:before {
+  background: url(https://static.indigoimages.ca/VersionedAssets/3.28.4/Assets/Shared/Images/sprites02.png) no-repeat -310px -5px; }
+
+.browsecartTab:after {
+  background: url(https://static.indigoimages.ca/VersionedAssets/3.28.4/Assets/Shared/Images/sprites02.png) no-repeat -441px -58px; }
+
+.search__t {
+  min-height: 35px; }
+
+.ng-cloak {
+  opacity: 0; }
+
+@font-face {
+  font-family: 'Gibson Light';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Gibson Light"), url(http://static.indigoimages.ca/Fonts/Gibson/Gibson-Light-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: 'Gibson Bold';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Gibson Bold"), url(../static.indigoimages.ca/gibson-semibold-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: 'Miller Display Italic';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Gibson Bold"), url(../static.indigoimages.ca/a15feab0-4555-4e27-9624-31073583528e-3.woff) format("woff"); }
+
+.search__t {
+  overflow: visible !important;
+  margin-left: -12px !important; }
+
+.ac-input-dropdown {
+  opacity: 0;
+  visibility: hidden; }
+  .ac-input-dropdown.open {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: .15s;
+    transition: .15s; }
+
+.ac-results-container {
+  position: absolute;
+  left: -521px;
+  background-color: #fff;
+  border: 1px solid #999;
+  width: 940px;
+  z-index: 100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px;
+  box-sizing: border-box; }
+
+.ac-results-col {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  margin-left: 15px;
+  margin-right: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+  .ac-results-col:first-child {
+    margin-left: 0; }
+  .ac-results-col:last-child {
+    margin-right: 0;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start; }
+  .ac-results-col .standard_title {
+    float: none;
+    line-height: 1.2;
+    border-bottom: #ebebeb 1px solid;
+    padding-bottom: 12px;
+    margin-bottom: 16px; }
+
+.ac-results-cta {
+  border: 1px solid #000;
+  font-size: 13px;
+  font-family: "Gibson Regular", Helvetica, Arial, Verdana, sans-serif;
+  letter-spacing: 0.125em;
+  color: #000;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  margin-top: 25px;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: .18s ease;
+  transition: .18s ease; }
+  .ac-results-cta:hover {
+    background-color: #472a49;
+    color: #fff;
+    text-decoration: none; }
+    .ac-results-cta:hover .ac-results-cta-num {
+      color: rgba(255, 255, 255, 0.75); }
+  .ac-results-cta-num {
+    color: #828282;
+    font-family: Gibson Light;
+    -webkit-transition: .18s ease;
+    transition: .18s ease; }
+
+.ac-results-prod-container {
+  padding: 10px;
+  margin: -10px;
+  -webkit-transition: .15s;
+  transition: .15s; }
+  .ac-results-prod-container:hover {
+    background-color: #f7f7f7; }
+  .ac-results-prod-container + .ac-results-prod-container {
+    margin-top: 20px; }
+
+.ac-results-prod-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start; }
+  .ac-results-prod-wrapper:hover {
+    text-decoration: none; }
+
+.ac-results-prod-info {
+  margin-left: 15px; }
+  .ac-results-prod-info em {
+    background-color: #efebef;
+    padding: 1px;
+    margin: 0 -1px; }
+
+.ac-results-prod-img {
+  box-shadow: 3px 3px 18px rgba(0, 0, 0, 0.15); }
+  .ac-results-prod-img-container {
+    width: 72px;
+    height: 72px;
+    min-width: 72px;
+    background-color: #ebebeb; }
+
+.ac-results-prod-title {
+  color: #333;
+  font: 14px/17px "Gibson Bold", "Helvetica", "Arial", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em; }
+
+.ac-results-prod-author {
+  font: 15px/22px 'Miller Display Italic', serif;
+  margin-top: 2px;
+  color: #333;
+  letter-spacing: .05em;
+  padding-bottom: 7px;
+  text-transform: capitalize; }
+
+.ac-results-prod-subtitle {
+  font: 14px/19px "Gibson Light", "Helvetica", "Arial", sans-serif;
+  letter-spacing: .02em;
+  color: #757575;
+  text-transform: none;
+  margin-bottom: 13px; }
+
+.ac-results-prod-price {
+  color: #000;
+  font: 12px/12px "Gibson Bold", "Helvetica", "Arial", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding-bottom: 10px; }
+  .ac-results-prod-price:before {
+    content: "";
+    margin: 6px 0 18px 0;
+    height: 1px;
+    background-color: #ebebeb;
+    width: 85px;
+    display: block; }
+
+.ac-results-data em {
+  background-color: #efebef;
+  padding: 1px;
+  margin: 0 -1px; }
+
+.ac-results-data a {
+  font-family: 'Gibson Regular', 'Helvetica', 'Arial', sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 11px;
+  line-height: 21px;
+  letter-spacing: .18em;
+  color: #4f4f4f;
+  cursor: pointer; }
+
+.ac-results-data + .ac-results-data .standard_title {
+  margin-top: 30px; }
+
+.ac-results-data-item + .ac-results-data-item {
+  margin-top: 8px; }
+
+.ac-results-data-item-em {
+  font-family: "Gibson Bold" !important; }
+
+.ac-results-data-item-delineator {
+  height: 3px;
+  width: 10px;
+  display: inline-block;
+  background-color: #a29ea2;
+  vertical-align: middle;
+  margin: -1px 6px 0 6px; }
+
+/*# sourceMappingURL=main.css.map */

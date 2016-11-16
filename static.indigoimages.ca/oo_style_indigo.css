@@ -1,0 +1,8 @@
+html[lang="fr"] #oo_tab,
+html[lang="fr-CA"] #oo_tab {
+    padding: 88px 0 52px 0;
+}
+html[lang="fr"] #oo_tab div,
+html[lang="fr-CA"] #oo_tab div {
+    background-image: url(oo_tab_fr.png);
+}

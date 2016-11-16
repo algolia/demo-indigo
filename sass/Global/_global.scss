@@ -1,0 +1,55 @@
+// ------------- GLOBAL OVERRIDES ------------- //
+.header_search div[role=combobox].select-standard {
+    background: url(https://static.indigoimages.ca/VersionedAssets/3.28.4/Assets/Shared/Images/down_arrow.png) no-repeat 99px center !important;
+}
+
+.logo-link {
+    background: url(https://static.indigoimages.ca/VersionedAssets/3.28.4/Assets/Shared/Images/indigo_logo_106x55.png) no-repeat;
+}
+
+.cart__icon {
+    background: url(https://static.indigoimages.ca/VersionedAssets/3.28.4/Assets/Shared/Images/shopping_cart.png) no-repeat;
+}
+
+.browsecartTab-title,
+.browsecartTab-buttonWrapper {
+    background: url(https://static.indigoimages.ca/VersionedAssets/3.28.4/Assets/Shared/Images/sprites02.png) no-repeat -170px -175px;
+}
+
+.browsecartTab:before {
+    background: url(https://static.indigoimages.ca/VersionedAssets/3.28.4/Assets/Shared/Images/sprites02.png) no-repeat -310px -5px;
+}
+
+.browsecartTab:after {
+    background: url(https://static.indigoimages.ca/VersionedAssets/3.28.4/Assets/Shared/Images/sprites02.png) no-repeat -441px -58px;
+}
+
+.search__t {
+    min-height: 35px;
+}
+
+.ng-cloak {
+    opacity: 0;
+}
+
+
+@font-face {
+  font-family: 'Gibson Light';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Gibson Light'), url(http://static.indigoimages.ca/Fonts/Gibson/Gibson-Light-webfont.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Gibson Bold';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Gibson Bold'), url(../static.indigoimages.ca/gibson-semibold-webfont.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Miller Display Italic';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Gibson Bold'), url(../static.indigoimages.ca/a15feab0-4555-4e27-9624-31073583528e-3.woff) format('woff');
+}
