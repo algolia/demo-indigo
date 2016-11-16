@@ -48,7 +48,7 @@
                     <div class="ac-results-prod-container" data-ng-repeat="result in searchInputController.productResults.hits">
                         <a class="ac-results-prod-wrapper" data-ng-href="{{searchInputController.renderPDPLink(result.PID, result.RecordType, result.Name_en, result.ToyName)}}">
                             <div class="ac-results-prod-img-container">
-                                <img class="ac-results-prod-img" data-ng-src="https://dynamic.indigoimages.ca/{{result.RecordType}}s/{{result.PID}}0.jpg">
+                                <img class="ac-results-prod-img" data-ng-if="result.RecordType === 'Gift' || result.RecordType === 'Toy'" data-ng-src="https://dynamic.indigoimages.ca/{{result.RecordType}}s/{{result.PID}}0.jpg">
                             </div>
                             <div class="ac-results-prod-info">
                                 <p class="ac-results-prod-title" data-ng-if="result.Name_en" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.Name_en.value)"></p>
@@ -67,20 +67,20 @@
                 <span>View More Products</span> <span class="ac-results-cta-num">({{searchInputController.productResults.nbHits}})</span>
             </a>
         </div>
-        <div class="ac-results-col">
-            <div class="ac-results-data" data-ng-if="searchInputController.currentRecordType != 'Book'">
+        <div class="ac-results-col" data-ng-class="{'empty': searchInputController.brandResults.hits.length === 0 && searchInputController.authorResults.hits.length === 0 && searchInputController.categoryResults.hits.length === 0}">
+            <div class="ac-results-data" data-ng-if="searchInputController.currentRecordType != 'Book' && searchInputController.brandResults.hits.length > 0">
                 <h2 class="standard_title">Brands</h2>
-                <div data-ng-repeat="result in searchInputController.brandResults.hits" class="ac-results-data-item">
+                <div data-ng-repeat="result in searchInputController._uniqueHits(searchInputController.brandResults.hits)" class="ac-results-data-item">
                     <a data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.name.value)"></a>
                 </div>
             </div>
-            <div class="ac-results-data" data-ng-if="searchInputController.currentRecordType === 'Book' || searchInputController.currentRecordType === ''">
+            <div class="ac-results-data" data-ng-if="(searchInputController.currentRecordType === 'Book' || searchInputController.currentRecordType === '') && searchInputController.authorResults.hits.length > 0">
                 <h2 class="standard_title">Authors</h2>
                 <div data-ng-repeat="result in searchInputController.authorResults.hits" class="ac-results-data-item">
                     <a data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.name.value)"></a>
                 </div>
             </div>
-            <div class="ac-results-data">
+            <div class="ac-results-data" data-ng-if="searchInputController.categoryResults.hits.length > 0">
                 <h2 class="standard_title">Categories</h2>
                 <div data-ng-repeat="result in searchInputController.categoryResults.hits" class="ac-results-data-item">
                     <p>

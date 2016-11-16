@@ -92,6 +92,10 @@ class SearchInputController {
     _hyphenateString(str) {
         return str.split(" ").join("-");
     }
+    
+    _uniqueHits(hits) {
+        return _.uniqBy(hits, 'name');
+    }
 
     enterInput(query) {
         console.log("TODO: handle 'enter' event");
