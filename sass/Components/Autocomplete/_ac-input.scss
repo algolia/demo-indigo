@@ -5,6 +5,13 @@
     margin-left: -12px!important;
 }
 
+.search__go {
+        display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
 
 // ------------- AUTOCOMPLETE INPUT - DROPDOWN ------------- //
 
@@ -17,3 +24,4 @@
         transition: .15s;
     }
 } 
+

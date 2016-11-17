@@ -14,7 +14,7 @@
             <input type="text" class="search__input" name="SearchBoxKeywords" autocomplete="off" tabindex="3" id="search-input" aria-labelledby="search-input-label" placeholder="search over 7 million products…" data-ng-keyup="$event.keyCode == 13 && searchInputController.enterInput(searchInputController.query)" autocomplete="off" data-ng-model="searchInputController.query" data-ng-change="searchInputController.searchStore.searchQuery()" /> </div>
         <div class="search__c4">
             <label for="search-submit" id="search-submit-label" style="display: none">search</label>
-            <button class="search__go" type="submit" id="search-submit" tabindex="3" aria-labelledby="search-submit-label">search</button>
+            <p class="search__go" data-ng-click="searchInputController.enterInput(searchInputController.query)">search</p>
         </div>
     </div>
     <div class="ac-results-container ng-cloak" data-ng-class="{'two-col': (searchInputController.currentRecordType != '' || searchInputController.bookResults.hits.length === 0), 'two-col-books': (searchInputController.currentRecordType === 'Book' || searchInputController.productResults.hits.length === 0), 'empty': ((searchInputController.currentRecordType === 'Book' && searchInputController.bookResults.hits.length === 0) || ((searchInputController.currentRecordType === 'Gift' || searchInputController.currentRecordType === 'Toy') && searchInputController.productResults.hits.length === 0))}" data-ng-if="(searchInputController.searchStore.displayResults && searchInputController.query) && (searchInputController.bookResults.hits.length > 0 || searchInputController.productResults.hits.length > 0)">
