@@ -150,8 +150,7 @@ function renderImgSrc(PID, RecordType) {
 }
 
 function renderAuthor(data, results) {
-    console.log(data);
-    return showTheRightThing(results).split("Author ").length > 1 ? showTheRightThing(results).split("Author ")[1] : showTheRightThing(results);
+    return showTheRightThing(results).split("Author ").length > 1 ? (showTheRightThing(results).split("Author ")[1].split("^").length > 1 ? showTheRightThing(results).split("Author ")[1].split("^")[0] : showTheRightThing(results).split("Author ")[1]) : showTheRightThing(results);
 }
 
 function showListPrice(adjusted, list) {
