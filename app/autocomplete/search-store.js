@@ -72,7 +72,7 @@ class SearchStore {
     _updateBookResults() {
         this._productsIndex.search(this.query, {
             filters: 'RecordType:Book',
-            hitsPerPage: 10
+            hitsPerPage: 8
         }).then(
             (results) => {
                 this._bookResults = results;
@@ -84,7 +84,7 @@ class SearchStore {
     _updateProductResults() {
         this._productsIndex.search(this.query, {
             filters: this._createProductsFilterQuery(this._currentRecordType),
-            hitsPerPage: 10
+            hitsPerPage: 8
         }).then(
             (results) => {
                 this._productResults = results;

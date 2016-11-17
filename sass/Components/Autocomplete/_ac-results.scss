@@ -55,7 +55,7 @@
             @extend %two-col;
         }
         &:not(.two-col) {
-            .ac-results-prod-container:nth-child(5) ~ .ac-results-prod-container {
+            .ac-results-prod-container:nth-child(4) ~ .ac-results-prod-container {
                 display: none;
             }
         }

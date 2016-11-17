@@ -37,8 +37,8 @@
                     </div>
                 </div>
             </div>
-            <a class="ac-results-cta">
-                <span>View More Books</span> <span class="ac-results-cta-num">({{searchInputController.bookResults.nbHits}})</span>
+            <a class="ac-results-cta" href="search.html?query={{searchInputController.query}}&recordtype=Book">
+                <span>View More Books</span> <span class="ac-results-cta-num">({{searchInputController.bookResults.nbHits | number}})</span>
             </a>
         </div>
         <div class="ac-results-col">
@@ -63,30 +63,30 @@
                     </div>
                 </div>
             </div>
-            <a class="ac-results-cta">
-                <span>View More Products</span> <span class="ac-results-cta-num">({{searchInputController.productResults.nbHits}})</span>
+            <a class="ac-results-cta" href="search.html?query={{searchInputController.query}}&recordtype=Products">
+                <span>View More Products</span> <span class="ac-results-cta-num">({{searchInputController.productResults.nbHits | number}})</span>
             </a>
         </div>
         <div class="ac-results-col" data-ng-class="{'empty': searchInputController.brandResults.hits.length === 0 && searchInputController.authorResults.hits.length === 0 && searchInputController.categoryResults.hits.length === 0}">
             <div class="ac-results-data" data-ng-if="searchInputController.currentRecordType != 'Book' && searchInputController.brandResults.hits.length > 0">
                 <h2 class="standard_title">Brands</h2>
                 <div data-ng-repeat="result in searchInputController._uniqueHits(searchInputController.brandResults.hits)" class="ac-results-data-item">
-                    <a data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.name.value)"></a>
+                    <a href="search.html?query={{result.name}}&recordtype=Products&brand={{result.name}}" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.name.value)"></a>
                 </div>
             </div>
             <div class="ac-results-data" data-ng-if="(searchInputController.currentRecordType === 'Book' || searchInputController.currentRecordType === '') && searchInputController.authorResults.hits.length > 0">
                 <h2 class="standard_title">Authors</h2>
                 <div data-ng-repeat="result in searchInputController.authorResults.hits" class="ac-results-data-item">
-                    <a data-ng-bind-html="searchInputController.renderAuthor(result._highlightResult.name.value)"></a>
+                    <a href="search.html?query={{result.name}}&recordtype=Book" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.name.value)"></a>
                 </div>
             </div>
             <div class="ac-results-data" data-ng-if="searchInputController.categoryResults.hits.length > 0">
                 <h2 class="standard_title">Categories</h2>
                 <div data-ng-repeat="result in searchInputController.categoryResults.hits" class="ac-results-data-item">
                     <p>
-                        <a class="ac-results-data-item-category ac-results-data-item-em" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.hierarchicalCategories.lvl0.value)"></a>
-                        <a class="ac-results-data-item-category" data-ng-if="result.hierarchicalCategories.lvl1" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.hierarchicalCategories.lvl1.value)"></a>
-                        <a class="ac-results-data-item-category" data-ng-if="result.hierarchicalCategories.lvl2" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.hierarchicalCategories.lvl2.value)"></a>
+                        <a href="search.html?query={{result.hierarchicalCategories.lvl0}}" class="ac-results-data-item-category ac-results-data-item-em" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.hierarchicalCategories.lvl0.value)"></a>
+                        <a href="search.html?query={{result.hierarchicalCategories.lvl1}}" class="ac-results-data-item-category" data-ng-if="result.hierarchicalCategories.lvl1" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.hierarchicalCategories.lvl1.value)"></a>
+                        <a href="search.html?query={{result.hierarchicalCategories.lvl2}}" class="ac-results-data-item-category" data-ng-if="result.hierarchicalCategories.lvl2" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.hierarchicalCategories.lvl2.value)"></a>
                     </p>
                 </div>
             </div>
