@@ -99,7 +99,7 @@ class SearchInputController {
     }
 
     enterInput(query) {
-        console.log("TODO: handle 'enter' event");
+        window.location = 'search.html?query=' + this.query;
     }
 
     updateRecordType(recordType) {
