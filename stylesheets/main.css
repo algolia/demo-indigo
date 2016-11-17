@@ -23,6 +23,9 @@
 .ng-cloak {
   opacity: 0; }
 
+.autoResultList {
+  display: none !important; }
+
 @font-face {
   font-family: 'Gibson Light';
   font-style: normal;

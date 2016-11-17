@@ -25,11 +25,15 @@
 }
 
 .search__t {
-    min-height: 35px;
+    min-height: 35px; 
 }
 
 .ng-cloak {
     opacity: 0;
+}
+
+.autoResultList {
+    display: none!important;
 }
 
 
