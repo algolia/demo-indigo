@@ -168,11 +168,12 @@
     text-align: center;
 }
 
-.ais-pagination--item:not(.ais-pagination--item__next) {
+.ais-pagination--item:not(.ais-pagination--item__next):not(.ais-pagination--item__previous) {
     display: none;
 }
 
-.ais-pagination--item__next {
+.ais-pagination--item__next,
+.ais-pagination--item__previous{
     border: 1px solid #000;
     padding: 10px 14px;
     margin-top: 25px;
@@ -199,6 +200,10 @@
             text-decoration: none;
         }
     }
+}
+
+.ais-pagination--item__previous {
+    margin-right: 10px;
 }
 
 .ais-refinement-list--label,

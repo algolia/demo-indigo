@@ -1,6 +1,6 @@
 function getParameterByName(name, url) {
     if (!url) {
-      url = window.location.href;
+        url = window.location.href;
     }
     name = name.replace(/[\[\]]/g, "\\$&");
     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
@@ -11,22 +11,14 @@ function getParameterByName(name, url) {
 }
 
 var q = getParameterByName('query');
-var recordtype = getParameterByName('recordtype');
 
-if (recordtype === 'Book') {
-    var filter = 'RecordType:Book';
-}
-if (recordtype === 'Gift' || recordtype === 'Toy') {
-    var filter = 'NOT RecordType:Book';
-}
 
 var search = instantsearch({
     appId: 'LFZTZSZ5P9',
     apiKey: 'f1c4e75168dc87c2b644cc74a9319cb8',
     indexName: 'products',
     searchParameters: {
-        query: q,
-        filters: filter
+        query: q
     }
 });
 
@@ -42,7 +34,7 @@ search.addWidget(
         container: '#hits-container',
         templates: {
             item: function (data) {
-                return '<div class="ais-hit-item-container"><a href=' + renderPDPLink(data.PID, data.RecordType, [data.Name_en, data.ToyName, data.title]) + '><div class="ais-hit-item-wrapper"><div class="ais-hit-item-img-container"><img class="ais-hit-item-img" src=' + renderImgSrc(data.PID, data.RecordType) + '></div><div class="ais-hit-item-info"><p class="ais-hit-item-title">' + showTheRightThing([data._highlightResult.Name_en, data._highlightResult.ToyName, data._highlightResult.title]) + '</p><p class="ais-hit-item-author">' + renderAuthor(data, [data._highlightResult.Contributors, data._highlightResult.BrandName, data._highlightResult.BrandName_en]) + '</p><p class="ais-hit-item-subtitle">' + showTheRightThing([data._highlightResult.subtitle, data._highlightResult.AudienceDescription, data._highlightResult.Style_en]) + '</p><p class="ais-hit-item-price"><span class="adjusted">$' + formatMoney(data.AdjustedPrice) + '</span>' + showListPrice(data.AdjustedPrice, data.ListPrice) + '</div></div></a></div>'
+                return '<div class="ais-hit-item-container"><a href=' + renderPDPLink(data.PID, data.RecordType, [data.Name_en, data.ToyName, data.title]) + '><div class="ais-hit-item-wrapper"><div class="ais-hit-item-img-container"><img class="ais-hit-item-img" src=' + renderImgSrc(data.PID, data.RecordType) + '></div><div class="ais-hit-item-info"><p class="ais-hit-item-title">' + showTheRightThing([data._highlightResult.Name_en, data._highlightResult.ToyName, data._highlightResult.title]) + '</p><p class="ais-hit-item-author">' + showTheRightThing([data._highlightResult.contributorsSafe, data._highlightResult.BrandName, data._highlightResult.BrandName_en]) + '</p><p class="ais-hit-item-subtitle">' + showTheRightThing([data._highlightResult.subtitle, data._highlightResult.AudienceDescription, data._highlightResult.Style_en]) + '</p><p class="ais-hit-item-price"><span class="adjusted">$' + formatMoney(data.AdjustedPrice) + '</span>' + showListPrice(data.AdjustedPrice, data.ListPrice) + '</div></div></a></div>'
             }
         }
     })
@@ -52,7 +44,8 @@ search.addWidget(
     instantsearch.widgets.pagination({
         container: '#pagination-container',
         labels: {
-            next: "View More"
+            next: "View More",
+            previous: "View Previous"
         }
     })
 );
@@ -157,10 +150,6 @@ function renderImgSrc(PID, RecordType) {
     } else {
         return "";
     }
-}
-
-function renderAuthor(data, results) {
-    return showTheRightThing(results).split("Author ").length > 1 ? (showTheRightThing(results).split("Author ")[1].split("^").length > 1 ? showTheRightThing(results).split("Author ")[1].split("^")[0] : showTheRightThing(results).split("Author ")[1]) : showTheRightThing(results);
 }
 
 function showListPrice(adjusted, list) {

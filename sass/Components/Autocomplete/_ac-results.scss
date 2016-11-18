@@ -37,6 +37,14 @@
         box-sizing: border-box;
         opacity: 0;
         visibility: hidden;
+        &:not(.ng-scope) {
+            opacity: 0;
+            visibility: hidden;
+        }
+        &:hover {
+            opacity: 1!important;
+            visibility: visible!important;
+        }
         &.two-col {
             &:not(.two-col-books) {
                 .ac-results-col {
@@ -62,7 +70,7 @@
             }
             @extend %two-col;
         }
-        &:not(.two-col) {
+        &:not(.two-col):not(.two-col-books) {
             .ac-results-prod-container:nth-child(4) ~ .ac-results-prod-container {
                 display: none;
             }
@@ -269,7 +277,7 @@
         }
         &:nth-child(5) ~ .ac-results-data-item {
             @include media-height(900px) {
-                    display: none;
+                display: none;
             }
         }
     }

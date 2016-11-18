@@ -1,15 +1,20 @@
 export function searchInputDirective() {
     return {
-        restrict: 'E',
+        restrict: 'AE',
         controller: 'SearchInputController',
         controllerAs: 'searchInputController',
         bindToController: true,
-        templateUrl: './app/autocomplete/components/search-input-component.html',
         link: link
     };
 
-    function link() {
-
+    function link(scope, element, attrs, controller) {
+/*        document.getElementById("search-option___combobox").addEventListener("blur", function(e) {
+            console.log(e.target);
+            if (controller.dropdownIsOpen && (e.target.className != "select-standard selected" && e.target.className != " select-standard selectListUIMenu ")) {
+                controller._dropdownIsOpen = false;
+                scope.$evalAsync();
+            }
+        });*/
     }
 }
 
@@ -25,6 +30,7 @@ class SearchInputController {
         this._AC_RECORD_TYPES = AC_RECORD_TYPES;
         this._dropdownIsOpen = false;
         this._isFocused = false;
+        this._hasLoaded = true;
     }
 
     get searchStore() {

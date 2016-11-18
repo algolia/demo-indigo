@@ -28,9 +28,9 @@
     min-height: 35px; 
 }
 
-.ng-cloak {
-   opacity: 1;
-    display: block;
+.loading {
+   opacity: 0;
+   visibility: hidden; 
 }
 
 .autoResultList {
