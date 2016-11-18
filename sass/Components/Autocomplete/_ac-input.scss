@@ -1,20 +1,21 @@
 // ------------- AUTOCOMPLETE INPUT - OVERRIDES ------------- //
-
 .search__t {
     overflow: visible!important;
     margin-left: -12px!important;
 }
 
 .search__go {
-        display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
 }
 
+.search__c3:before {
+    height: 42px;
+}
 
 // ------------- AUTOCOMPLETE INPUT - DROPDOWN ------------- //
-
 .ac-input-dropdown {
     opacity: 0;
     visibility: hidden;
@@ -23,5 +24,4 @@
         visibility: visible;
         transition: .15s;
     }
-} 
-
+}

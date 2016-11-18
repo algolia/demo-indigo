@@ -46,7 +46,7 @@ gulp.task('sass:watch', function () {
 
 gulp.task('js:bundle', function () {
     var builder = new Builder('', './config.js');
-    builder.buildStatic('app/**/*.js', 'bundle.js', {minify: true});
+    builder.buildStatic('app/autocomplete/**/*.js', 'bundle.js', {minify: true});
 });
 
 gulp.task('js:bundle-watch', function () {

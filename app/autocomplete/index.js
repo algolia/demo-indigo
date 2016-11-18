@@ -1,10 +1,13 @@
 import angular from 'angular';
 
 import SearchStore from './search-store.js';
-import SearchInputController, { searchInputDirective } from './components/search-input-component.js';
+import SearchInputController, {
+    searchInputDirective
+}
+from './components/search-input-component.js';
 
 export default angular
-.module('Algolia.Autocomplete', [])
+    .module('Algolia.Autocomplete', [])
     .config(['$compileProvider', function ($compileProvider) {
         $compileProvider.debugInfoEnabled(false);
     }])
@@ -19,6 +22,5 @@ export default angular
     .controller('SearchInputController', SearchInputController)
     .directive('searchInput', searchInputDirective);
 
-angular.element(document).ready(function () {
-    angular.bootstrap(document.getElementById("AlgoliaAutocomplete"), ['Algolia.Autocomplete']);
-})
+
+angular.bootstrap(document.getElementById("AlgoliaAutocomplete"), ['Algolia.Autocomplete']);

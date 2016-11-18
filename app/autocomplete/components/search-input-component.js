@@ -24,6 +24,7 @@ class SearchInputController {
         this._$sce = $sce;
         this._AC_RECORD_TYPES = AC_RECORD_TYPES;
         this._dropdownIsOpen = false;
+        this._isFocused = false;
     }
 
     get searchStore() {
@@ -51,6 +52,10 @@ class SearchInputController {
 
     get dropdownIsOpen() {
         return this._dropdownIsOpen;
+    }
+    
+    get isFocused() {
+        return this._isFocused;
     }
 
     get bookResults() {
@@ -105,6 +110,14 @@ class SearchInputController {
     updateRecordType(recordType) {
         this.toggleDropdown();
         this._searchStore.updateRecordType(recordType);
+    }
+    
+    focusOn() {
+        this._isFocused = true;
+    }
+    
+    focusOff() {
+        this._isFocused = false;
     }
 
 }

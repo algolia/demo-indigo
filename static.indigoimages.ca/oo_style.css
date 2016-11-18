@@ -38,9 +38,9 @@ The following code is Copyright 1998-2016 Opinionlab, Inc. All rights reserved. 
 .oo_bar { padding-bottom: 37px; }
 
 #oo_tab { background-color: #ffffff; border: 1px solid #cccccc; display: block; position: fixed; top: 40%; padding: 55px 0px 55px 0px; width: 35px; z-index: 999995; cursor: pointer; -webkit-transform-style: preserve-3d; transform-style: preserve-3d; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
-#oo_tab span { bottom: 15px; display: block; background: url("oo_tab_icon.gif") no-repeat; height: 9px; position: absolute; width: 9px; }
-#oo_tab div { background-image: url("oo_tab.png"); background-repeat: no-repeat; position: absolute; display: block; height: 100%; left: 0; top: 0; width: 100%; }
-#oo_tab.wcag a { background: url("oo_tab_icon.gif") no-repeat; background-repeat: no-repeat; background-position: center bottom; border: none; outline: none; position: absolute; display: block; bottom: 14px; left: -6px; top: 0; width: 100%; }
+#oo_tab span { bottom: 15px; display: block;  height: 9px; position: absolute; width: 9px; }
+#oo_tab div { background-repeat: no-repeat; position: absolute; display: block; height: 100%; left: 0; top: 0; width: 100%; }
+#oo_tab.wcag a { background-repeat: no-repeat; background-position: center bottom; border: none; outline: none; position: absolute; display: block; bottom: 14px; left: -6px; top: 0; width: 100%; }
 #oo_tab.wcag img { border: none; outline: none; display: block; position: absolute; left: -6px; top: -10px; }
 #oo_tab .screen_reader { position: absolute; clip: rect(1px 1px 1px 1px); /* for Internet Explorer */ clip: rect(1px, 1px, 1px, 1px); padding: 0; border: 0; height: 1px; width: 1px; overflow: hidden; }
 
@@ -138,8 +138,8 @@ The following code is Copyright 1998-2016 Opinionlab, Inc. All rights reserved. 
 @media all\0 { #oo_waypoint_prompt #oo_close_prompt, #oo_invitation_prompt #oo_close_prompt, .oo_cc_wrapper .oo_cc_close { font-size: 20px; line-height: 20px; top: 8px; } }
 @media print { #oo_bar, .oo_feedback_float, #oo_tab { display: none; } }
 /* CSS for high-resolution retina devices */
-@media only screen and (-Webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (min-device-pixel-ratio: 1.5) { #oo_tab div { background-image: url("oo_tab_retina.gif"); background-size: 100%; }
-  #oo_tab span { background-image: url("oo_tab_icon_retina.gif"); background-size: 100%; }
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (min-device-pixel-ratio: 1.5) { #oo_tab div {  background-size: 100%; }
+  #oo_tab span { background-size: 100%; }
   #oo_bar span.icon { background-image: url("oo_bar_icon_retina.gif"); background-size: 100%; }
   .oo_feedback_float .olUp { background: url("oo_float_icon_retina.gif") center 10px no-repeat; background-size: 20%; }
   #oo_tab_1 span.icon { background-image: url("oo_tab_icon_1_retina.gif") !important; background-size: 100%; } }

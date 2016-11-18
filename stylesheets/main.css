@@ -21,7 +21,8 @@
   min-height: 35px; }
 
 .ng-cloak {
-  opacity: 0; }
+  opacity: 1;
+  display: block; }
 
 .autoResultList {
   display: none !important; }
@@ -60,6 +61,9 @@
           justify-content: center;
   cursor: pointer; }
 
+.search__c3:before {
+  height: 42px; }
+
 .ac-input-dropdown {
   opacity: 0;
   visibility: hidden; }
@@ -89,7 +93,13 @@
   .ac-results-container.two-col .ac-results-prod-container:nth-child(even), .ac-results-container.two-col-books .ac-results-prod-container:nth-child(even) {
     margin-right: -10px; }
 
+.ac-results-container.is-focused {
+  opacity: 1;
+  visibility: visible; }
+
 .ac-results-container {
+  -webkit-transition: .1s ease;
+  transition: .1s ease;
   position: absolute;
   left: -521px;
   background-color: #fff;
@@ -100,7 +110,9 @@
   display: -ms-flexbox;
   display: flex;
   padding: 20px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden; }
   .ac-results-container.two-col:not(.two-col-books) .ac-results-col:first-child {
     display: none; }
   .ac-results-container.two-col:not(.two-col-books) .ac-results-col:nth-child(2) {
@@ -116,10 +128,16 @@
     display: none; }
   .ac-results-container:not(.two-col) .ac-results-prod-container:nth-child(4) ~ .ac-results-prod-container {
     display: none; }
+  @media (max-height: 900px) {
+    .ac-results-container:not(.two-col) .ac-results-prod-container:nth-child(3) ~ .ac-results-prod-container {
+      display: none; } }
   .ac-results-container.empty {
     opacity: 0;
     visibility: hidden;
     pointer-events: none; }
+  @media (max-height: 900px) {
+    .ac-results-container .ac-results-prod-container:nth-child(6) ~ .ac-results-prod-container {
+      display: none; } }
 
 .ac-results-col {
   -webkit-box-flex: 1;
@@ -180,6 +198,13 @@
     font-family: Gibson Light;
     -webkit-transition: .18s ease;
     transition: .18s ease; }
+
+.search__go {
+  -webkit-transition: .18s ease;
+  transition: .18s ease; }
+  .search__go:hover {
+    background-color: #472a49;
+    color: #fff; }
 
 .ac-results-prod-container {
   padding: 10px;
@@ -288,6 +313,10 @@
   vertical-align: middle;
   margin: -1px 6px 0 6px; }
 
+@media (max-height: 900px) {
+  .ac-results-data-item:nth-child(5) ~ .ac-results-data-item {
+    display: none; } }
+
 .search__c4.instant-search {
   opacity: 0;
   visibility: hidden;
@@ -305,7 +334,7 @@
   text-transform: uppercase;
   letter-spacing: .15em;
   margin-top: 30px; }
-  #categories-container .ais-header {
+  #record-type-container .ais-header {
     margin-top: 0; }
 
 .ais-search-container {

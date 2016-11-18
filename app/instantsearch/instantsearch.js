@@ -16,7 +16,7 @@ var recordtype = getParameterByName('recordtype');
 if (recordtype === 'Book') {
     var filter = 'RecordType:Book';
 }
-else {
+if (recordtype === 'Gift' || recordtype === 'Toy') {
     var filter = 'NOT RecordType:Book';
 }
 
@@ -52,7 +52,7 @@ search.addWidget(
     instantsearch.widgets.pagination({
         container: '#pagination-container',
         labels: {
-            next: "Show More"
+            next: "View More"
         }
     })
 );
@@ -109,6 +109,16 @@ search.addWidget(
         attributeName: 'BrandName_en',
         templates: {
             header: 'Gifts'
+        }
+    })
+);
+
+search.addWidget(
+    instantsearch.widgets.refinementList({
+        container: '#record-type-container',
+        attributeName: 'RecordType',
+        templates: {
+            header: 'Product Type'
         }
     })
 );

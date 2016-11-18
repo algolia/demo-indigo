@@ -38,9 +38,9 @@ The following code is Copyright 1998-2016 Opinionlab, Inc. All rights reserved. 
 .oo_bar { padding-bottom: 37px; }
 
 #oo_tab { background-color: #ffffff; border: 1px solid #cccccc; display: block; position: fixed; top: 40%; padding: 55px 0px 55px 0px; width: 35px; z-index: 999995; cursor: pointer; -webkit-transform-style: preserve-3d; transform-style: preserve-3d; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
-#oo_tab span { bottom: 15px; display: block; background: url("oo_tab_icon.gif") no-repeat; height: 9px; position: absolute; width: 9px; }
+#oo_tab span { bottom: 15px; display: block; height: 9px; position: absolute; width: 9px; }
 #oo_tab div { background-image: url("oo_tab.png"); background-repeat: no-repeat; position: absolute; display: block; height: 100%; left: 0; top: 0; width: 100%; }
-#oo_tab.wcag a { background: url("oo_tab_icon.gif") no-repeat; background-repeat: no-repeat; background-position: center bottom; border: none; outline: none; position: absolute; display: block; bottom: 14px; left: -6px; top: 0; width: 100%; }
+#oo_tab.wcag a { background-repeat: no-repeat; background-position: center bottom; border: none; outline: none; position: absolute; display: block; bottom: 14px; left: -6px; top: 0; width: 100%; }
 #oo_tab.wcag img { border: none; outline: none; display: block; position: absolute; left: -6px; top: -10px; }
 #oo_tab .screen_reader { position: absolute; clip: rect(1px 1px 1px 1px); /* for Internet Explorer */ clip: rect(1px, 1px, 1px, 1px); padding: 0; border: 0; height: 1px; width: 1px; overflow: hidden; }
 
