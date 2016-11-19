@@ -232,6 +232,15 @@
             display: block;
         }
     }
+    &-loc {
+        padding-bottom: 5px;
+        &-text {
+            font: 13px/19px "Gibson Light Italic", "Helvetica", "Arial", sans-serif;
+            letter-spacing: .02em;
+            color: #757575;
+            text-transform: none;
+        }
+    } 
 }
 
 .ac-results-data {

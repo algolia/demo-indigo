@@ -530,17 +530,23 @@
                 </div>
             </div>
 
-            <div class="content-wrapper">
+            <div class="content-wrapper" id="AlgoliaAutocomplete">
                 <div class="logo-and-search clearfix">
                     <div class="header_section">
                         <a class="logo-link" href="https://www.chapters.indigo.ca/" title="Click to Go to Home Page"><span>Indigo</span></a>
                         <a href="https://www.chapters.indigo.ca/en-ca/freeshipping/" title="free shipping to any stores and on all orders over $25" class="free-shipping-banner__link"><img src="//static.indigoimages.ca/2016/Banners/MASTHEAD_FreeShip_HOLIDAY_EN_v2.gif" alt="free shipping to any stores and on all orders over $25" class="free-shipping-banner__img" /></a>
                     </div>
 
-
-                    <div role="search" id="AlgoliaAutocomplete" class="header_search" data-script="searchBox" data-ta-min-chars='1' data-ta-max-suggestions='10' data-ta='https://dynamic.indigoimages.ca/typeahead/SearchSuggestion.ses' data-is-test-endeca-pct='90' data-is-test-ui-pct='0' data-is-test-cookie-name='ISTV_3280_90' data-is-test-a='e1' data-is-test-b='ee'>
+                    <div class="geoloc-container ng-cloak" data-geoloc-selector>
+                                    <ul>
+                                        <li><input type="radio" name="cities" id="location"><label for="location" data-ng-click="geolocSelectorController.searchStore.updateIP()">Your Location</label></li>
+                                        <li data-ng-repeat="city in geolocSelectorController.cities"><input name="cities" type="radio" id="{{::city.name}}"><label data-ng-click="geolocSelectorController.searchStore.updateGeoloc(city.lat, city.lon)" for="{{::city.name}}">{{::city.name}}</label></li>
+                                    </ul>
+                                </div>
+                    <div role="search" class="header_search" data-script="searchBox" data-ta-min-chars='1' data-ta-max-suggestions='10' data-ta='https://dynamic.indigoimages.ca/typeahead/SearchSuggestion.ses' data-is-test-endeca-pct='90' data-is-test-ui-pct='0' data-is-test-cookie-name='ISTV_3280_90' data-is-test-a='e1' data-is-test-b='ee'>
                         <div class="search__t ng-cloak" data-ng-controller="SearchInputController as searchInputController">
                             <div data-search-input>
+                                
     <div class="search__r">
         <div class="search__c3">
             <input type="hidden" name="SearchBoxSection" value="home" />
@@ -574,6 +580,7 @@
                                 <p class="ac-results-prod-author" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.contributorsSafe.value)"></p>
                                 <p class="ac-results-prod-subtitle" data-ng-if="result.subtitle" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.subtitle.value)"></p>
                                 <p class="ac-results-prod-price">Price {{result.AdjustedPrice | currency}}</p>
+                                <p data-ng-if="result._rankingInfo.geoDistance < 2000000" class="ac-results-prod-loc"><span class="search-page__icon-available icon-checked"></span><span class="ac-results-prod-loc-text">Available Near Me</span></p>
                             </div>
                         </a>
                     </div>
@@ -613,13 +620,13 @@
             <div class="ac-results-data" data-ng-if="searchInputController.currentRecordType != 'Book' && searchInputController.brandResults.hits.length > 0">
                 <h2 class="standard_title">Brands</h2>
                 <div data-ng-repeat="result in searchInputController._uniqueHits(searchInputController.brandResults.hits)" class="ac-results-data-item">
-                    <a href="search.html?query={{result.name}}&recordtype=Products&brand={{result.name}}" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.name.value)"></a>
+                    <a href="search.html?brandType={{result.RecordType}}&brand={{result.name}}" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.name.value)"></a>
                 </div>
             </div>
             <div class="ac-results-data" data-ng-if="(searchInputController.currentRecordType === 'Book' || searchInputController.currentRecordType === '') && searchInputController.authorResults.hits.length > 0">
                 <h2 class="standard_title">Authors</h2>
                 <div data-ng-repeat="result in searchInputController.authorResults.hits" class="ac-results-data-item">
-                    <a href="search.html?query={{result.name}}&recordtype=Book" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.name.value)"></a>
+                    <a href="search.html?contributor={{result.name}}&recordtype=Book" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.name.value)"></a>
                 </div>
             </div>
             <div class="ac-results-data" data-ng-if="searchInputController.categoryResults.hits.length > 0">

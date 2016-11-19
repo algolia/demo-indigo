@@ -24,6 +24,8 @@ class SearchStore {
         this.query = "";
         this._currentRecordType = "";
         this._displayResults = false;
+        this._geoLocIp = true;
+        this._geoLocLatLon = '';
     }
 
     get displayResults() {
@@ -53,6 +55,14 @@ class SearchStore {
     get authorResults() {
         return this._authorResults;
     }
+    
+    get geoLocIp() {
+        return this._geoLocIp;
+    }
+    
+    get geoLocLatLon() {
+        return this._geoLocLatLon;
+    }
 
     updateRecordType(recordType) {
         this._currentRecordType = recordType; 
@@ -68,23 +78,40 @@ class SearchStore {
             this._updateAuthorResults();
         }
     }
+    
+    updateGeoloc(lat, lon) {
+        this._geoLocLatLon = lat + ", " + lon;
+        this._geoLocIp = false;
+        this.searchQuery();
+    }
+    
+    updateIP() {
+        this._geoLocLatLon = '';
+        this._geoLocIp = true;
+        this.searchQuery();
+    }
 
     _updateBookResults() {
         this._productsIndex.search(this.query, {
             filters: 'RecordType:Book',
-            hitsPerPage: 8
+            hitsPerPage: 8,
+            getRankingInfo: true,
+            aroundLatLngViaIP: this._geoLocIp,
+            aroundLatLng: this._geoLocLatLon
         }).then(
             (results) => {
                 this._bookResults = results;
                 this._displayResults = true;
                 this._$rootScope.$evalAsync();
+                console.log(this._geoLocLatLon);
             }).catch(err => this._handleFetchError(err));
     }
 
     _updateProductResults() {
         this._productsIndex.search(this.query, {
             filters: this._createProductsFilterQuery(this._currentRecordType),
-            hitsPerPage: 8
+            hitsPerPage: 8,
+            getRankingInfo: true
         }).then(
             (results) => {
                 this._productResults = results;

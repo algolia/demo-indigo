@@ -27,11 +27,48 @@
 .autoResultList {
   display: none !important; }
 
+.ng-cloak {
+  opacity: 0;
+  visibility: hidden; }
+
+.search-page__icon-available {
+  color: #328f3f;
+  font-size: 10px;
+  padding-right: 3px;
+  min-width: 17px;
+  display: inline-block; }
+
+.geoloc-container {
+  position: fixed;
+  top: 10px;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #999;
+  z-index: 999;
+  -webkit-transform: translateX(calc(-100% - 10px));
+          transform: translateX(calc(-100% - 10px));
+  margin-right: 10px;
+  font-family: 'Gibson Regular';
+  text-transform: uppercase;
+  color: #000;
+  letter-spacing: .1em;
+  font-size: 12px; }
+  .geoloc-container input {
+    margin-right: 6px; }
+  .geoloc-container li + li {
+    margin-top: 8px; }
+
 @font-face {
   font-family: 'Gibson Light';
   font-style: normal;
   font-weight: 400;
   src: local("Gibson Light"), url(http://static.indigoimages.ca/Fonts/Gibson/Gibson-Light-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: 'Gibson Light Italic';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Gibson Light"), url(/static.indigoimages.ca/gibson-lightit-webfont.woff) format("woff"); }
 
 @font-face {
   font-family: 'Gibson Bold';
@@ -44,6 +81,12 @@
   font-style: normal;
   font-weight: 400;
   src: local("Gibson Bold"), url(../static.indigoimages.ca/a15feab0-4555-4e27-9624-31073583528e-3.woff) format("woff"); }
+
+@font-face {
+  font-family: 'Indicon';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/static.indigoimages.ca/indicon.woff) format("woff"); }
 
 .search__t {
   overflow: visible !important;
@@ -286,6 +329,14 @@
     width: 85px;
     display: block; }
 
+.ac-results-prod-loc {
+  padding-bottom: 5px; }
+  .ac-results-prod-loc-text {
+    font: 13px/19px "Gibson Light Italic", "Helvetica", "Arial", sans-serif;
+    letter-spacing: .02em;
+    color: #757575;
+    text-transform: none; }
+
 .ac-results-data em {
   background-color: #efebef;
   padding: 1px;
@@ -487,8 +538,6 @@
 
 .ais-pagination--item__next,
 .ais-pagination--item__previous {
-  border: 1px solid #000;
-  padding: 10px 14px;
   margin-top: 25px;
   display: inline-block;
   text-align: center;
@@ -505,22 +554,25 @@
     color: #000;
     text-transform: uppercase;
     -webkit-transition: .18s ease;
-    transition: .18s ease; }
+    transition: .18s ease;
+    border: 1px solid #000;
+    padding: 10px 14px;
+    display: inline-block; }
   .ais-pagination--item__next:hover,
   .ais-pagination--item__previous:hover {
-    background-color: #472a49;
-    color: #fff !important;
     text-decoration: none; }
     .ais-pagination--item__next:hover a,
     .ais-pagination--item__previous:hover a {
       color: #fff !important;
+      background-color: #472a49;
       text-decoration: none; }
 
 .ais-pagination--item__previous {
   margin-right: 10px; }
 
 .ais-refinement-list--label,
-.ais-menu--link {
+.ais-menu--link,
+.ais-hierarchical-menu--link {
   font-family: 'Gibson Regular';
   text-transform: uppercase;
   color: #000;
@@ -529,33 +581,55 @@
   display: inline-block;
   cursor: pointer; }
   .ais-refinement-list--label:hover,
-  .ais-menu--link:hover {
+  .ais-menu--link:hover,
+  .ais-hierarchical-menu--link:hover {
     text-decoration: underline; }
   .ais-refinement-list--label input,
-  .ais-menu--link input {
+  .ais-menu--link input,
+  .ais-hierarchical-menu--link input {
     margin-right: 7px; }
   .ais-refinement-list--label .ais-refinement-list--count,
   .ais-refinement-list--label .ais-menu--count,
+  .ais-refinement-list--label .ais-hierarchical-menu--count,
   .ais-menu--link .ais-refinement-list--count,
-  .ais-menu--link .ais-menu--count {
+  .ais-menu--link .ais-menu--count,
+  .ais-menu--link .ais-hierarchical-menu--count,
+  .ais-hierarchical-menu--link .ais-refinement-list--count,
+  .ais-hierarchical-menu--link .ais-menu--count,
+  .ais-hierarchical-menu--link .ais-hierarchical-menu--count {
     margin-left: 2px;
     color: #828282;
     font-family: Gibson Light; }
     .ais-refinement-list--label .ais-refinement-list--count:before,
     .ais-refinement-list--label .ais-menu--count:before,
+    .ais-refinement-list--label .ais-hierarchical-menu--count:before,
     .ais-menu--link .ais-refinement-list--count:before,
-    .ais-menu--link .ais-menu--count:before {
+    .ais-menu--link .ais-menu--count:before,
+    .ais-menu--link .ais-hierarchical-menu--count:before,
+    .ais-hierarchical-menu--link .ais-refinement-list--count:before,
+    .ais-hierarchical-menu--link .ais-menu--count:before,
+    .ais-hierarchical-menu--link .ais-hierarchical-menu--count:before {
       content: "("; }
     .ais-refinement-list--label .ais-refinement-list--count:after,
     .ais-refinement-list--label .ais-menu--count:after,
+    .ais-refinement-list--label .ais-hierarchical-menu--count:after,
     .ais-menu--link .ais-refinement-list--count:after,
-    .ais-menu--link .ais-menu--count:after {
+    .ais-menu--link .ais-menu--count:after,
+    .ais-menu--link .ais-hierarchical-menu--count:after,
+    .ais-hierarchical-menu--link .ais-refinement-list--count:after,
+    .ais-hierarchical-menu--link .ais-menu--count:after,
+    .ais-hierarchical-menu--link .ais-hierarchical-menu--count:after {
       content: ")"; }
   .ais-refinement-list--label .ais-menu--link:hover,
-  .ais-menu--link .ais-menu--link:hover {
+  .ais-refinement-list--label .ais-hierarchical-menu--link:hover,
+  .ais-menu--link .ais-menu--link:hover,
+  .ais-menu--link .ais-hierarchical-menu--link:hover,
+  .ais-hierarchical-menu--link .ais-menu--link:hover,
+  .ais-hierarchical-menu--link .ais-hierarchical-menu--link:hover {
     color: #000; }
 
-.ais-menu--item__active .ais-menu--link {
+.ais-menu--item__active .ais-menu--link,
+.ais-hierarchical-menu--item__active > div > .ais-hierarchical-menu--link {
   text-decoration: underline;
   color: #7d337a; }
 

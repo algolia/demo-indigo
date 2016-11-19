@@ -25,36 +25,86 @@
 }
 
 .search__t {
-    min-height: 35px; 
+    min-height: 35px;
 }
 
 .loading {
-   opacity: 0;
-   visibility: hidden; 
+    opacity: 0;
+    visibility: hidden;
 }
 
 .autoResultList {
     display: none!important;
 }
 
+.ng-cloak {
+    opacity: 0;
+    visibility: hidden;
+}
 
-@font-face {
-  font-family: 'Gibson Light';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Gibson Light'), url(http://static.indigoimages.ca/Fonts/Gibson/Gibson-Light-webfont.woff) format('woff');
+.search-page__icon-available {
+    color: #328f3f;
+    font-size: 10px;
+    padding-right: 3px;
+    min-width: 17px;
+    display: inline-block;
+}
+
+.geoloc {
+    &-container {
+        position: fixed;
+        top: 10px;
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid #999;
+        z-index: 999;
+        transform: translateX(calc(-100% - 10px));
+        margin-right: 10px;
+        font-family: 'Gibson Regular';
+        text-transform: uppercase;
+        color: #000;
+        letter-spacing: .1em;
+        font-size: 12px;
+        input {
+            margin-right: 6px;
+        }
+        li + li {
+            margin-top: 8px;
+        }
+    }
 }
 
 @font-face {
-  font-family: 'Gibson Bold';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Gibson Bold'), url(../static.indigoimages.ca/gibson-semibold-webfont.woff) format('woff');
+    font-family: 'Gibson Light';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Gibson Light'), url(http://static.indigoimages.ca/Fonts/Gibson/Gibson-Light-webfont.woff) format('woff');
 }
 
 @font-face {
-  font-family: 'Miller Display Italic';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Gibson Bold'), url(../static.indigoimages.ca/a15feab0-4555-4e27-9624-31073583528e-3.woff) format('woff');
+    font-family: 'Gibson Light Italic';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Gibson Light'), url(/static.indigoimages.ca/gibson-lightit-webfont.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Gibson Bold';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Gibson Bold'), url(../static.indigoimages.ca/gibson-semibold-webfont.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Miller Display Italic';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Gibson Bold'), url(../static.indigoimages.ca/a15feab0-4555-4e27-9624-31073583528e-3.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Indicon';
+    font-style: normal;
+    font-weight: 400;
+    src: url(/static.indigoimages.ca/indicon.woff) format('woff');
 }

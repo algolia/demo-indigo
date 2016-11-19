@@ -5,6 +5,10 @@ import SearchInputController, {
     searchInputDirective
 }
 from './components/search-input-component.js';
+import GeolocSelectorController, {
+    geolocSelectorDirective
+}
+from './components/geoloc-selector.js';
 
 export default angular
     .module('Algolia.Autocomplete', [])
@@ -17,7 +21,9 @@ export default angular
     .constant('AC_RECORD_TYPES', ['Book', 'Gift', 'Toy'])
     .service('searchStore', SearchStore)
     .controller('SearchInputController', SearchInputController)
-    .directive('searchInput', searchInputDirective);
+    .directive('searchInput', searchInputDirective)
+    .controller('GeolocSelectorController', GeolocSelectorController)
+    .directive('geolocSelector', geolocSelectorDirective);
 
 
 angular.bootstrap(document.getElementById("AlgoliaAutocomplete"), ['Algolia.Autocomplete']);

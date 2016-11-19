@@ -11,14 +11,24 @@ function getParameterByName(name, url) {
 }
 
 var q = getParameterByName('query');
-
+var recordtype = getParameterByName('recordtype');
+var brandName = getParameterByName('brand');
+var brandType = getParameterByName('brandType');
+var contributor = getParameterByName('contributor');
 
 var search = instantsearch({
     appId: 'LFZTZSZ5P9',
     apiKey: 'f1c4e75168dc87c2b644cc74a9319cb8',
     indexName: 'products',
     searchParameters: {
-        query: q
+        query: q,
+        facetsRefinements: {
+            RecordType: recordtype ? [recordtype] : [],
+            BrandName_en: brandName && brandType === 'Gift' ? [brandName] : [],
+            BrandName: brandName && brandType === 'Toy' ? [brandName] : [],
+            contributorsSafe: contributor ? [contributor] : []
+        },
+        facets: ['RecordType', 'BrandName_en', 'BrandName', 'contributorsSafe']
     }
 });
 
@@ -67,9 +77,9 @@ search.addWidget(
 );
 
 search.addWidget(
-    instantsearch.widgets.menu({
+    instantsearch.widgets.hierarchicalMenu({
         container: '#categories-container',
-        attributeName: 'hierarchicalCategories.lvl0',
+        attributes: ['hierarchicalCategories.lvl0', 'hierarchicalCategories.lvl1', 'hierarchicalCategories.lvl2'],
         templates: {
             header: 'Categories'
         }
@@ -112,6 +122,16 @@ search.addWidget(
         attributeName: 'RecordType',
         templates: {
             header: 'Product Type'
+        }
+    })
+);
+
+search.addWidget(
+    instantsearch.widgets.refinementList({
+        container: '#contributors-container',
+        attributeName: 'contributorsSafe',
+        templates: {
+            header: 'Contributors'
         }
     })
 );
