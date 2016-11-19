@@ -29,6 +29,9 @@ if (category1) {
     }
 }
 
+var hasSortedByGeo = false;
+
+
 var search = instantsearch({
     appId: 'LFZTZSZ5P9',
     apiKey: 'f1c4e75168dc87c2b644cc74a9319cb8',
@@ -44,7 +47,9 @@ var search = instantsearch({
         hierarchicalFacetsRefinements: {
             'hierarchicalCategories.lvl0': hierarchicalCats ? hierarchicalCats : []
         },
-        facets: ['RecordType', 'BrandName_en', 'BrandName', 'contributorsSafe']
+        facets: ['RecordType', 'BrandName_en', 'BrandName', 'contributorsSafe'],
+        getRankingInfo: true,
+        aroundLatLngViaIP: hasSortedByGeo
     }
 });
 
@@ -87,6 +92,10 @@ search.addWidget(
             {
                 name: 'products_price_low_high',
                 label: 'Price (Low to High)'
+            },
+            {
+                name: 'products_geoloc',
+                label: 'Nearest To Me'
             }
             ]
     })
@@ -136,6 +145,7 @@ search.addWidget(
     instantsearch.widgets.refinementList({
         container: '#record-type-container',
         attributeName: 'RecordType',
+        limit: '8',
         templates: {
             header: 'Product Type'
         }
@@ -161,6 +171,15 @@ search.addWidget(
 
 search.start();
 
+search.on('render', onRenderHandler);
+
+function onRenderHandler() {
+    var sortBySelector = document.querySelectorAll(".ais-sort-by-selector")[0];
+    sortBySelector.addEventListener("change", function (el) {
+        sortBySelector.value === 'products_geoloc' ? hasSortedByGeo = true : hasSortedByGeo = false;
+    })
+}
+
 function showTheRightThing(results) {
     return getTheRightThing(results) != undefined ? getTheRightThing(results).value : '';
 }
@@ -174,7 +193,7 @@ function renderPDPLink(PID, RecordType, results) {
 }
 
 function hyphenateString(str) {
-    return str.split(" ").join("-");
+    return str ? str.split(" ").join("-") : "";
 }
 
 function renderImgSrc(PID, RecordType) {
