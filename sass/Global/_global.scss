@@ -37,11 +37,6 @@
     display: none!important;
 }
 
-.ng-cloak {
-    opacity: 0;
-    visibility: hidden;
-}
-
 .search-page__icon-available {
     color: #328f3f;
     font-size: 10px;
@@ -65,6 +60,10 @@
         color: #000;
         letter-spacing: .1em;
         font-size: 12px;
+        &.ng-cloak {
+            opacity: 0;
+            visibility: hidden;
+        }
         input {
             margin-right: 6px;
         }

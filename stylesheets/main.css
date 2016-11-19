@@ -27,10 +27,6 @@
 .autoResultList {
   display: none !important; }
 
-.ng-cloak {
-  opacity: 0;
-  visibility: hidden; }
-
 .search-page__icon-available {
   color: #328f3f;
   font-size: 10px;
@@ -53,6 +49,9 @@
   color: #000;
   letter-spacing: .1em;
   font-size: 12px; }
+  .geoloc-container.ng-cloak {
+    opacity: 0;
+    visibility: hidden; }
   .geoloc-container input {
     margin-right: 6px; }
   .geoloc-container li + li {

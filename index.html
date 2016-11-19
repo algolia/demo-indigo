@@ -539,8 +539,8 @@
 
                     <div class="geoloc-container ng-cloak" data-geoloc-selector>
                                     <ul>
-                                        <li><input type="radio" name="cities" id="location"><label for="location" data-ng-click="geolocSelectorController.searchStore.updateIP()">Your Location</label></li>
-                                        <li data-ng-repeat="city in geolocSelectorController.cities"><input name="cities" type="radio" id="{{::city.name}}"><label data-ng-click="geolocSelectorController.searchStore.updateGeoloc(city.lat, city.lon)" for="{{::city.name}}">{{::city.name}}</label></li>
+                                        <li data-ng-click="geolocSelectorController.searchStore.updateIP()"><input type="radio" name="cities" id="location"><label for="location">Your Location</label></li>
+                                        <li data-ng-repeat="city in geolocSelectorController.cities" data-ng-click="geolocSelectorController.searchStore.updateGeoloc(city.lat, city.lon)"><input name="cities" type="radio" id="{{::city.name}}"><label for="{{::city.name}}">{{::city.name}}</label></li>
                                     </ul>
                                 </div>
                     <div role="search" class="header_search" data-script="searchBox" data-ta-min-chars='1' data-ta-max-suggestions='10' data-ta='https://dynamic.indigoimages.ca/typeahead/SearchSuggestion.ses' data-is-test-endeca-pct='90' data-is-test-ui-pct='0' data-is-test-cookie-name='ISTV_3280_90' data-is-test-a='e1' data-is-test-b='ee'>
@@ -633,9 +633,9 @@
                 <h2 class="standard_title">Categories</h2>
                 <div data-ng-repeat="result in searchInputController.categoryResults.hits" class="ac-results-data-item">
                     <p>
-                        <a href="search.html?query={{result.hierarchicalCategories.lvl0}}" class="ac-results-data-item-category ac-results-data-item-em" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.hierarchicalCategories.lvl0.value)"></a>
-                        <a href="search.html?query={{result.hierarchicalCategories.lvl1}}" class="ac-results-data-item-category" data-ng-if="result.hierarchicalCategories.lvl1" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.hierarchicalCategories.lvl1.value)"></a>
-                        <a href="search.html?query={{result.hierarchicalCategories.lvl2}}" class="ac-results-data-item-category" data-ng-if="result.hierarchicalCategories.lvl2" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.hierarchicalCategories.lvl2.value)"></a>
+                        <a href="search.html?category1={{result.hierarchicalCategories.lvl0}}" class="ac-results-data-item-category ac-results-data-item-em" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.hierarchicalCategories.lvl0.value)"></a>
+                        <a href="search.html?category1={{result.hierarchicalCategories.lvl0}}&category2={{result.hierarchicalCategories.lvl1}}" class="ac-results-data-item-category" data-ng-if="result.hierarchicalCategories.lvl1" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.hierarchicalCategories.lvl1.value)"></a>
+                        <a href="search.html?category1={{result.hierarchicalCategories.lvl0}}&category2={{result.hierarchicalCategories.lvl1}}&category3={{result.hierarchicalCategories.lvl2}}" class="ac-results-data-item-category" data-ng-if="result.hierarchicalCategories.lvl2" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.hierarchicalCategories.lvl2.value)"></a>
                     </p>
                 </div>
             </div>

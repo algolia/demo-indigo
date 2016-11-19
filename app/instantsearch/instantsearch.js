@@ -15,6 +15,19 @@ var recordtype = getParameterByName('recordtype');
 var brandName = getParameterByName('brand');
 var brandType = getParameterByName('brandType');
 var contributor = getParameterByName('contributor');
+var category1 = getParameterByName('category1');
+var category2 = getParameterByName('category2');
+var category3 = getParameterByName('category3');
+
+if (category1) {
+    var hierarchicalCats = [category1];
+    if (category2) {
+        var hierarchicalCats = [category1 + ' > ' + category2];
+        if (category3) {
+            var hierarchicalCats = [category1 + ' > ' + category2 + ' > ' + category3];
+        }
+    }
+}
 
 var search = instantsearch({
     appId: 'LFZTZSZ5P9',
@@ -27,6 +40,9 @@ var search = instantsearch({
             BrandName_en: brandName && brandType === 'Gift' ? [brandName] : [],
             BrandName: brandName && brandType === 'Toy' ? [brandName] : [],
             contributorsSafe: contributor ? [contributor] : []
+        },
+        hierarchicalFacetsRefinements: {
+            'hierarchicalCategories.lvl0': hierarchicalCats ? hierarchicalCats : []
         },
         facets: ['RecordType', 'BrandName_en', 'BrandName', 'contributorsSafe']
     }
