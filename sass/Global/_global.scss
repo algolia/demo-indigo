@@ -81,10 +81,10 @@
 }
 
 @font-face {
-    font-family: 'Gibson Light Italic';
+    font-family: 'Gibson Light Italic';  
     font-style: normal;
     font-weight: 400;
-    src: local('Gibson Light'), url(/static.indigoimages.ca/gibson-lightit-webfont.woff) format('woff');
+    src: local('Gibson Light'), url(../static.indigoimages.ca/gibson-lightit-webfont.woff) format('woff');
 }
 
 @font-face {
@@ -105,5 +105,5 @@
     font-family: 'Indicon';
     font-style: normal;
     font-weight: 400;
-    src: url(/static.indigoimages.ca/indicon.woff) format('woff');
+    src: url(../static.indigoimages.ca/indicon.woff) format('woff');
 }
