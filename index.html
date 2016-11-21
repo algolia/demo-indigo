@@ -580,7 +580,7 @@
                                 <p class="ac-results-prod-author" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.contributorsSafe.value)"></p>
                                 <p class="ac-results-prod-subtitle" data-ng-if="result.subtitle" data-ng-bind-html="searchInputController.renderHtml(result._highlightResult.subtitle.value)"></p>
                                 <p class="ac-results-prod-price">Price {{result.AdjustedPrice | currency}}</p>
-                                <p data-ng-if="result._rankingInfo.geoDistance < 2000000" class="ac-results-prod-loc"><span class="search-page__icon-available icon-checked"></span><span class="ac-results-prod-loc-text">Available Near Me</span></p>
+                                <p data-ng-if="result._rankingInfo.matchedGeoLocation.distance < 20000000" class="ac-results-prod-loc"><span class="search-page__icon-available icon-checked"></span><span class="ac-results-prod-loc-text">Available {{result._rankingInfo.matchedGeoLocation.distance}}m From Me</span></p>
                             </div>
                         </a>
                     </div>
