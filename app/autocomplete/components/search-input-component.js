@@ -89,7 +89,11 @@ class SearchInputController {
     }
 
     renderHtml(text) {
-        return this._$sce.trustAsHtml(text);
+        return this._$sce.trustAsHtml(this.filterBadChars(text));
+    }
+    
+    filterBadChars(str) {
+        return str.split('').filter(i => i != '�').join('');
     }
 
     renderAuthor(author) {

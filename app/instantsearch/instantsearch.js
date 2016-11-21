@@ -29,8 +29,6 @@ if (category1) {
     }
 }
 
-var hasSortedByGeo = false;
-
 
 var search = instantsearch({
     appId: 'LFZTZSZ5P9',
@@ -48,8 +46,7 @@ var search = instantsearch({
             'hierarchicalCategories.lvl0': hierarchicalCats ? hierarchicalCats : []
         },
         facets: ['RecordType', 'BrandName_en', 'BrandName', 'contributorsSafe'],
-        getRankingInfo: true,
-        aroundLatLngViaIP: hasSortedByGeo
+        getRankingInfo: true
     }
 });
 
@@ -92,10 +89,6 @@ search.addWidget(
             {
                 name: 'products_price_low_high',
                 label: 'Price (Low to High)'
-            },
-            {
-                name: 'products_geoloc',
-                label: 'Nearest To Me'
             }
             ]
     })
@@ -174,14 +167,11 @@ search.start();
 search.on('render', onRenderHandler);
 
 function onRenderHandler() {
-    var sortBySelector = document.querySelectorAll(".ais-sort-by-selector")[0];
-    sortBySelector.addEventListener("change", function (el) {
-        sortBySelector.value === 'products_geoloc' ? hasSortedByGeo = true : hasSortedByGeo = false;
-    })
+
 }
 
 function showTheRightThing(results) {
-    return getTheRightThing(results) != undefined ? getTheRightThing(results).value : '';
+    return filterBadChars(getTheRightThing(results) != undefined ? getTheRightThing(results).value : '');
 }
 
 function getTheRightThing(results) {
@@ -213,4 +203,8 @@ function showListPrice(adjusted, list) {
 
 function formatMoney(amt) {
     return Number(amt).toFixed(2);
+}
+
+function filterBadChars(str) {
+    return str.split('').filter(i => i != '�').join('');
 }

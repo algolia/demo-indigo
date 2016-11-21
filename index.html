@@ -539,7 +539,7 @@
 
                     <div class="geoloc-container ng-cloak" data-geoloc-selector>
                                     <ul>
-                                        <li data-ng-click="geolocSelectorController.searchStore.updateIP()"><input type="radio" name="cities" id="location"><label for="location">Your Location</label></li>
+                                        <li data-ng-click="geolocSelectorController.searchStore.updateIP()"><input type="radio" name="cities" id="location" checked><label for="location">Your Location</label></li>
                                         <li data-ng-repeat="city in geolocSelectorController.cities" data-ng-click="geolocSelectorController.searchStore.updateGeoloc(city.lat, city.lon)"><input name="cities" type="radio" id="{{::city.name}}"><label for="{{::city.name}}">{{::city.name}}</label></li>
                                     </ul>
                                 </div>
