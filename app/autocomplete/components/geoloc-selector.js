@@ -25,17 +25,17 @@ class GeolocSelectorController {
             {
                 name: "Toronto",
                 lat: '43.65',
-                lon: '79.38'
+                lon: '-79.38'
             },
             {
                 name: "Montreal",
                 lat: '45.50',
-                lon: '73.56'
+                lon: '-73.56'
             },
             {
                 name: "Toronto (East York)",
                 lat: '43.69',
-                lon: '79.34'
+                lon: '-79.34'
             }
         ]
     }
