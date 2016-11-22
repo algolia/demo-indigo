@@ -35,7 +35,7 @@ class GeolocSelectorController {
             {
                 name: "Toronto (East York)",
                 lat: '43.69',
-                lon: '-79.34'
+                lon: '-79.33'
             }
         ]
     }

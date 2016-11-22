@@ -167,7 +167,19 @@ search.start();
 search.on('render', onRenderHandler);
 
 function onRenderHandler() {
+    Array.prototype.slice.call(document.querySelectorAll('.ais-refinement-list--checkbox')).forEach(item => {
+        replaceProductTypes(item, "VideoGame", "Video Game");
+        replaceProductTypes(item, "AG", "American Girl");
+        replaceProductTypes(item, "eReadingAccessory", "eReading Accessory");
+        replaceProductTypes(item, "appleelectronics", "Apple Electronics");
+        replaceProductTypes(item, "eReadingDevice", "eReading Device");
+    })
+}
 
+function replaceProductTypes(item, type, replacement) {
+    if (item.nextSibling.data.includes(type)) {
+        item.nextSibling.replaceData(0, item.nextSibling.length, replacement);
+    }
 }
 
 function showTheRightThing(results) {
