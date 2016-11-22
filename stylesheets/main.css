@@ -632,4 +632,11 @@
   text-decoration: underline;
   color: #7d337a; }
 
+.ais-hierarchical-menu--body {
+  margin-top: -7px; }
+
+.ais-hierarchical-menu--list__lvl0 > .ais-hierarchical-menu--item {
+  border-bottom: 1px solid #ebebeb;
+  margin-bottom: 10px; }
+
 /*# sourceMappingURL=main.css.map */
