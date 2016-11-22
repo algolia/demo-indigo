@@ -34,6 +34,7 @@ var search = instantsearch({
     appId: 'LFZTZSZ5P9',
     apiKey: 'f1c4e75168dc87c2b644cc74a9319cb8',
     indexName: 'products',
+    urlSync: true,
     searchParameters: {
         query: q,
         facetsRefinements: {
