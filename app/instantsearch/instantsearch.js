@@ -33,7 +33,7 @@ if (category1) {
 var search = instantsearch({
     appId: 'LFZTZSZ5P9',
     apiKey: 'f1c4e75168dc87c2b644cc74a9319cb8',
-    indexName: 'products',
+    indexName: 'products_updated',
     urlSync: true,
     searchParameters: {
         query: q,
@@ -84,11 +84,11 @@ search.addWidget(
         container: '#sort-container',
         indices: [
             {
-                name: 'products',
+                name: 'products_updated',
                 label: 'Most relevant'
             },
             {
-                name: 'products_price_low_high',
+                name: 'products_updated_price_low_high',
                 label: 'Price (Low to High)'
             }
             ]

@@ -14,7 +14,7 @@ export default angular
     .module('Algolia.Autocomplete', [])
     .constant('APP_ID', 'LFZTZSZ5P9')
     .constant('API_KEY', 'f1c4e75168dc87c2b644cc74a9319cb8')
-    .constant('INDEX_PRODUCTS', 'products')
+    .constant('INDEX_PRODUCTS', 'products_updated')
     .constant('INDEX_BRANDS', 'brands')
     .constant('INDEX_AUTHORS', 'authors')
     .constant('INDEX_CATEGORIES', 'categories')
