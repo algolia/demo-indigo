@@ -38,7 +38,7 @@ var search = instantsearch({
     searchParameters: {
         query: q,
         facetsRefinements: {
-            RecordType: recordtype ? [recordtype] : [],
+            RecordType: (recordtype && recordtype != "Products") ? [recordtype] : [],
             BrandName_en: brandName && brandType === 'Gift' ? [brandName] : [],
             BrandName: brandName && brandType === 'Toy' ? [brandName] : [],
             contributorsSafe: contributor ? [contributor] : []
