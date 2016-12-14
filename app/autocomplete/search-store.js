@@ -97,7 +97,8 @@ class SearchStore {
             hitsPerPage: 8,
             getRankingInfo: true,
             aroundLatLngViaIP: this._geoLocIp,
-            aroundLatLng: this._geoLocLatLon
+            aroundLatLng: this._geoLocLatLon,
+            aroundRadius: "all"
         }).then(
             (results) => {
                 this._bookResults = results;
